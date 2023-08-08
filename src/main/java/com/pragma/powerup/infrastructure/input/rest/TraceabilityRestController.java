@@ -52,4 +52,14 @@ public class TraceabilityRestController {
         return ResponseEntity.ok(traceabilityHandler.getAllTraceability(orderId));
     }
 
+    @Operation(summary = "time difference for orders")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "302", description = "time difference", content = @Content),
+            @ApiResponse(responseCode = "409", description = "The order has not finished", content = @Content)
+    })
+    @GetMapping("/timeDifferenceForOrders")
+    public ResponseEntity<String> timeDifferenceForOrders(@RequestParam() Long orderId) {
+        return ResponseEntity.ok(traceabilityHandler.timeDifferenceForOrders(orderId));
+    }
+
 }

@@ -8,6 +8,7 @@ import com.pragma.powerup.infrastructure.out.mongodb.repository.ITraceabilityMon
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class TraceabilityJpaAdapter implements ITraceabilityPersistencePort {
@@ -25,5 +26,11 @@ public class TraceabilityJpaAdapter implements ITraceabilityPersistencePort {
     @Override
     public List<TraceabilityModel> getAllTraceability(Long orderId) {
         return traceabilityEntityMapper.toTraceabilityModelList(traceabilityRepository.findByOrderId(String.valueOf(orderId)));
+    }
+
+    @Override
+    public TraceabilityModel getTraceabilityByOrderIdAndNewStatus(Long orderId, String status) {
+        Optional<Traceability> traceability = traceabilityRepository.findByOrderIdAndNewStatus(String.valueOf(orderId), status);
+        return traceabilityEntityMapper.toTraceabilityModel(traceability.orElse(null));
     }
 }

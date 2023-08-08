@@ -32,4 +32,9 @@ public class TraceabilityHandler implements ITraceabilityHandler {
     public List<TraceabilityResponseDto> getAllTraceability(Long orderId) {
         return traceabilityResponseMapper.toResponseList(traceabilityServicePort.getAllTraceability(orderId));
     }
+
+    @Override
+    public String timeDifferenceForOrders(Long orderId) {
+        return traceabilityServicePort.timeDifferenceForOrders(orderId);
+    }
 }

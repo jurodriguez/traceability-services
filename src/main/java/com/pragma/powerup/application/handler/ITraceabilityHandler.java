@@ -10,4 +10,6 @@ public interface ITraceabilityHandler {
     void saveTraceability(TraceabilityRequestDto traceabilityRequestDto);
 
     List<TraceabilityResponseDto> getAllTraceability(Long orderId);
+
+    String timeDifferenceForOrders(Long orderId);
 }

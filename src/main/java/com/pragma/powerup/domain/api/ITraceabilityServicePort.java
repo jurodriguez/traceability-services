@@ -9,4 +9,6 @@ public interface ITraceabilityServicePort {
     void saveTraceability(TraceabilityModel traceabilityModel);
 
     List<TraceabilityModel> getAllTraceability(Long orderId);
+
+    String timeDifferenceForOrders(Long orderId);
 }
